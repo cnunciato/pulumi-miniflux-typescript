@@ -14,18 +14,6 @@ export class MinifluxService {
 
         const service = new awsx.ecs.FargateService("service", {
             desiredCount: 1,
-            taskDefinitionArgs: {
-                containers: {
-                    service: {
-                        image: "miniflux/miniflux:latest",
-                        portMappings: [
-                            listener
-                        ],
-                        environment: [
-                            {
-                                name: "DATABASE_URL",
-                                value: database.connectionString,
-                            },
                             {
                                 name: "RUN_MIGRATIONS",
                                 value: "1",
